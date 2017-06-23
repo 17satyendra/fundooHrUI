@@ -1,0 +1,8 @@
+ md-sidenav{
+
+        top: 64px !important;
+      }
+      .search-bar { background-color: rgb(40,53,147); }
+.search-bar * { color: white !important; }
+.search-bar input { border-bottom-color: white; }
+.md-errors-spacer { display:none; }

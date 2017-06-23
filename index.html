@@ -1,30 +1,100 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-      
+      <link rel="stylesheet" href="style.css">
     </head>
     <body ng-app="sidenavDemo2">
 
-<div ng-controller="AppCtrl" layout="column" style="height: 500px;" ng-cloak>
+<div ng-controller="AppCtrl as ctrl" layout="column" style="height: 500px;" ng-cloak>
 <md-toolbar class="md-hue-2">
-      <div class="md-toolbar-tools">
+      <div id="search-bar" ng-show="ctrl.showPreSearchBar()" class="md-toolbar-tools">
         <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
           <md-icon data-ng-click="toggleLeft()" md-svg-icon="image/menu.svg"></md-icon>
         </md-button>
 
-        <h2 flex md-truncate>Toolbar with Disabled/Enabled Icon Buttons</h2>
 
-        <md-button class="md-icon-button" aria-label="Favorite">
-          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+<!-- User profile button with details
+<md-menu>
+        <md-button ng-click="$mdOpenMenu($event)"  ng-class="{'md-icon-button': !$mdMedia('gt-xs')}">
+          <md-icon>account_circle</md-icon><span hide-xs> Profile</span>
         </md-button>
+        <md-menu-content layout="column" width="5" style="max-height:90vh;">
+        <md-menu-item ng-disabled>
+              <md-icon ng-style="{'font-size': '36pt'}" style="height:48px; width:48px;">account_circle</md-icon>
+            <div layout="column" flex>
+              <div>Name:</div>
+              <div>email:email@example.com</div>
+            </div>
+        </md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <md-menu-item>
+            <md-button ng-href="#">button 1</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-href="#">button 2</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-href="#" ng-disabled="true">button 3</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-href="#">button 4</md-button>
+          </md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <div flex="100" layout="row">
+            <md-button flex class="md-primary" ng-href="#">button 5</md-button>
+            <md-button flex class="md-accent md-raised" ng-href="#">button 6</md-button>
+          </div>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </md-toolbar>------------------->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <h2 flex md-truncate>FundooHR</h2>
+
+        <md-button ng-click="ctrl.initiateSearch()">
+          <md-icon>search</md-icon>
+          <span>Search</span>
+        </md-button>
         <md-button class="md-icon-button" aria-label="More">
           <md-icon md-svg-icon="image/more-vert.svg"></md-icon>
+        </md-button>
+      </div>
+      <div ng-show="ctrl.showSearchBar()" class="md-toolbar-tools search-bar">
+
+        <md-button class="md-icon-button" ng-click="ctrl.submit()">
+          <md-icon>search</md-icon>
+        </md-button>
+
+        <!-- Input Text -->
+        <md-input-container flex>
+          <!-- <label for="search">Search</label> -->
+          <input id="search-input" type="text" ng-model="search" />
+        </md-input-container>
+
+        <md-button class="md-icon-button" ng-click="ctrl.endSearch()">
+          <md-icon>close</md-icon>
         </md-button>
       </div>
     </md-toolbar>
@@ -33,38 +103,41 @@
                 md-disable-backdrop md-whiteframe="4">
 
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+        <h1 class="md-toolbar-tools">Dashboard</h1>
       </md-toolbar>
 
       <md-content layout-margin>
-        <p>
-          This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
-        </p>
-        <md-button ng-click="toggleLeft()" class="md-accent">
-          Close this Sidenav
-        </md-button>
-      </md-content>
-
-    </md-sidenav>
-
-    <md-content flex layout-padding>
-
-      <div layout="column" layout-align="top center">
-        <p>
-          Developers can also disable the backdrop of the sidenav.<br/>
-          This will disable the functionality to click outside to close the sidenav.
-        </p>
-
+      
         <div>
-          <md-button ng-click="toggleLeft()" class="md-raised">
-            Toggle Sidenav
-          </md-button>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="image/home.svg"></md-icon>
+          Home
+        </md-button>
         </div>
-
-      </div>
-
-    </md-content>
-
+          <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="image/man.svg"></md-icon>
+          Engineers
+        </md-button>
+        </div>
+          <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="image/attendance.svg"></md-icon>
+          Attendance
+        </md-button>
+        </div>
+          <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="image/client.svg"></md-icon>
+          Clients
+        </md-button>
+        </div>
+        <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="image/report.svg"></md-icon>
+          Reports
+        </md-button>
+        </div>
   </section>
 
 </div>
