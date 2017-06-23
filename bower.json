@@ -1,0 +1,21 @@
+{
+  "name": "fundooHRProfile",
+  "authors": [
+    "Uma Shankar <shankar.uma35@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.4"
+  }
+}
