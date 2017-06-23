@@ -1,0 +1,21 @@
+{
+  "name": "fundooAdd",
+  "authors": [
+    "Satyendra Singh <deepak.deepu2020@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^1.0.4",
+    "angular-material": "^1.1.4"
+  }
+}
