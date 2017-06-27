@@ -1,11 +1,72 @@
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Add New Employee</a>
     </div>
 
   </div>
-</nav>
+</nav> -->
+<md-toolbar class="md-hue-2">
+      <div id="search-bar" ng-show="showPreSearchBar()" class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <!-- Input Text -->
+        <md-input-container flex>
+          <!-- <label for="search">Search</label> -->
+          <input id="search-input" type="text" ng-model="search" />
+        </md-input-container>
+
+        <md-button class="md-icon-button" ng-click="endSearch()">
+          <md-icon>close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+
+
+    <section layout="row" flex>
+ <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-disable-backdrop md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Dashboard</h1>
+      </md-toolbar>
+
+      <md-content layout-margin>
+
+        <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="img/icons/home.svg"></md-icon>
+          Home
+        </md-button>
+        </div>
+          <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="img/icons/man.svg"></md-icon>
+          Engineers
+        </md-button>
+        </div>
+          <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="img/icons/attendance.svg"></md-icon>
+          Attendance
+        </md-button>
+        </div>
+          <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="img/icons/client.svg"></md-icon>
+          Clients
+        </md-button>
+        </div>
+        <div>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          <md-icon data-ng-click="toggleLeft()" md-svg-icon="img/icons/report.svg"></md-icon>
+          Reports
+        </md-button>
+        </div>
+  </section>
+
 <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
   <!-- <md-button class="md-raised md-primary" ng-click="addEmployee($event)">Add New Employee</md-button> -->
 </div>
@@ -16,7 +77,7 @@
                     <div class="panel-body">
                         <form ng-submit="addNew()">
                             <table class="table table-striped table-bordered">
-                              <div>
+                              <div style="margin-bottom:15px;">
                                 <input type="submit" class="btn btn-primary addnew" value="Add New">
                               </div>
                                 <thead>
@@ -46,11 +107,19 @@
 																				<td>
 		                                        <input type="password" class="form-control" ng-model="personalDetail.password" required/></td>
                                         <td>
-    		                                    <input type="text" class="form-control" ng-model="personalDetail.password" required/></td>
+    		                                    <input type="text" class="form-control" ng-model="personalDetail.mobile" required/></td>
                                         <td>
 				                                    <input type="text" class="form-control" ng-model="personalDetail.address" required/></td>
 																				<td>
-						                                <input type="text" class="form-control" ng-model="personalDetail.city" required/></td>
+						                                <!-- <input type="text" class="form-control" ng-model="personalDetail.city" required/></td> -->
+                                            <!-- <select class="selectpicker" multiple data-selected-text-format="count">
+                                                <option>Mustard</option>
+                                                <option>Ketchup</option>
+                                                <option>Relish</option>
+                                            </select> -->
+                                            <select ng-model="personalDetail.city" ng-options="d for d in cities">
+                                            </select>
+
 																				<td>
 		                                        <input type="text" class="form-control" ng-model="personalDetail.country" required/></td>
 																				<td>
@@ -61,9 +130,9 @@
                             </table>
 
                             <div class="form-group">
-                                <input ng-hide="!personalDetails.length" type="button" class="btn btn-danger pull-right" ng-click="remove()" value="Remove">
+                                <input ng-hide="!personalDetails.length" type="button" class="btn btn-danger addnew" ng-click="remove()" value="Remove">
 
-                                <input class="btn btn-primary addnew pull-right" value="Save" ng-click="save(personalDetail)">
+                                <button class="btn btn-primary" ng-click="save(personalDetail)">save</button>
                             </div>
                         </form>
                     </div>

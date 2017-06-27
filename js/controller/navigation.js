@@ -1,4 +1,4 @@
-myApp.controller('homeController', function($scope, $mdDialog){
+myApp.controller('homeController', function($scope, $mdDialog, $timeout, $mdSidenav){
   console.log('cxvcbvcv')
   // $scope.addEmployee = function(ev) {
   //   console.log('cxvbcvbcvbc');
@@ -16,6 +16,39 @@ myApp.controller('homeController', function($scope, $mdDialog){
   //     $scope.status = 'You cancelled the dialog.';
   //   });
   // };
+     $scope.toggleLeft = buildToggler('left');
+     $scope.toggleRight = buildToggler('right');
+
+     function buildToggler(componentId) {
+       return function() {
+         $mdSidenav(componentId).toggle();
+       };
+     }
+     var ctrl = this;
+ $scope.search = null;
+ $scope.showPreSearchBar = function() {
+   return ctrl.search == null;
+ };
+ $scope.initiateSearch = function() {
+   $scope.search = '';
+ };
+ $scope.showSearchBar = function() {
+   return $scope.search != null
+ };
+ $scope.endSearch = function() {
+   return $scope.search = null;
+ };
+ $scope.submit = function() {
+   console.error('Search function not yet implemented');
+ }
+
+ // to focus on input element after it appears
+ $scope.$watch(function() {
+   return document.querySelector('#search-bar:not(.ng-hide)');
+ }, function(){
+     document.getElementById('search-input').focus();
+ });
+  $scope.cities = ["Kanpur", "Panvel", "Bhopal", "Mumbai"];
   $scope.personalDetails = [
           {
               'fname':'Muhammed',
@@ -77,6 +110,12 @@ myApp.controller('homeController', function($scope, $mdDialog){
           });
       };
       $scope.save=function(personalDetail){
+        // for(var i=0; i< personalDetail.length; i++ ){
+        //   if (isNew) {
+        //
+        //   }
+        // }
+        //
           console.log($scope.personalDetails);
       }
 
